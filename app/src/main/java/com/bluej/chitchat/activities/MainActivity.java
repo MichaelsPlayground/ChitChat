@@ -65,10 +65,13 @@ public class MainActivity extends BaseActivity implements ConversionListener {
 
     private void loadUserDetails(){
         binding.textName.setText(preferenceManager.getString(Constants.KEY_NAME));
-        byte[] bytes= Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE),Base64.DEFAULT);
-
-        Bitmap bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-        binding.imageprofile.setImageBitmap(bitmap);
+        try {
+            byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            binding.imageprofile.setImageBitmap(bitmap);
+        } catch (IllegalArgumentException e) {
+            Log.e("main", "Exception on loading profile image: " + e.getMessage());
+        }
 
     }
     private void showToast(String message){
