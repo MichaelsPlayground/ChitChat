@@ -37,21 +37,24 @@ android {
     dataBinding{
         enabled=true
     }
+    namespace 'com.bluej.chitchat'
 }
 
 dependencies {
 
+    // this dependency is necessary for updating to Gradle 8.12, otherwise it would fail
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.6.1'
+    //implementation 'com.google.firebase:firebase-messaging-ktx:23.3.1'
+    //implementation 'com.google.firebase:firebase-firestore-ktx:24.9.1'
+    implementation 'com.google.firebase:firebase-messaging:23.3.1'
+    implementation 'com.google.firebase:firebase-firestore:24.9.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-
-
 
     //Scalable size unit(Support for different screen size)
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
